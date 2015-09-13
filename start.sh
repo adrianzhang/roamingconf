@@ -47,6 +47,7 @@ else
 		export PATH=\"$PATH\"
 		" ~/.zshrc > /tmp/abc
 		mv -f /tmp/abc $CURRENTDIR/.zshrc
+		echo "zsh conf synced"
 	else
 		echo "install zsh at first"
 		exit 0
@@ -56,6 +57,7 @@ else
 		# remove original ~/.oh-my-zsh
 		rm -rf ~/.oh-my-zsh
 		ln -s $CURRENTDIR/oh-my-zsh ~/.oh-my-zsh
+		echo "oh-my-zsh conf synced"
 	else
 		echo "install oh-my-zsh fist"
 		exit 0
