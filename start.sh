@@ -3,26 +3,28 @@
 # This script used to automatically sync configurations of zsh, oh-my-zsh, sublime Text 2 & 3, etc.
 
 echo "Please install zsh, chsh -s $(which zsh) & relogin, install oh-my-zsh at first. Also install Sublime Text 2 or 3 manually before running this script, if not press Ctrl-C to exit."
-echo "a) Elementory OS (Ubuntu based)"
-echo "b) Mac OS X"
+#echo "a) Elementory OS (Ubuntu based)"
+#echo "b) Mac OS X"
+
 CURRENTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-read -p "Please select current OS (input a or b and press Enter)-->"
-if [[ "$REPLY" != [a,b] ]]; then
+#read -p "Please select current OS (input a or b and press Enter)-->"
+OSTYPE=`uname`
+if [[ "$OSTYPE" != [Dawwin,Linux] ]]; then
 	exit 0
 else
-	case "$REPLY" in
-		a)
+	case "$OSTYPE" in
+		Linux)
 			SL2DIR=$HOME/.config/sublime-text-2
 			SL3DIR=$HOME/.config/sublime-text-3
 			;;
-		b)
+		Darwin)
 			SL2="/Library/Application Support/Sublime Text 2"
 			SL3="/Library/Application Support/Sublime Text 3"
 			SL2DIR=$HOME$SL2
 			SL3DIR=$HOME$SL3
 			;;
 	esac
-	
+
 	if [ -d "$SL2DIR" ]; then
 		rm -r "$SL2DIR"/Packages/User
 		ln -s $CURRENTDIR/sublime2/User/ "$SL2DIR"/Packages/User
@@ -49,7 +51,7 @@ else
 		mv -f /tmp/abc $CURRENTDIR/.zshrc
 		echo "zsh conf synced"
 	else
-		echo "install zsh at first"
+		echo "zsh not installed"
 		exit 0
 	fi
 
@@ -59,9 +61,9 @@ else
 		ln -s $CURRENTDIR/oh-my-zsh ~/.oh-my-zsh
 		echo "oh-my-zsh conf synced"
 	else
-		echo "install oh-my-zsh fist"
+		echo "oh-my-zsh not installed"
 		exit 0
 	fi
-	
+
 fi
 exit 0
