@@ -2,14 +2,11 @@
 
 # This script used to automatically sync configurations of zsh, oh-my-zsh, sublime Text 2 & 3, etc.
 
-echo "Please install zsh, chsh -s $(which zsh) & relogin, install oh-my-zsh at first. Also install Sublime Text 2 or 3 manually before running this script, if not press Ctrl-C to exit."
-#echo "a) Elementory OS (Ubuntu based)"
-#echo "b) Mac OS X"
+echo "welcome"
 
 CURRENTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-#read -p "Please select current OS (input a or b and press Enter)-->"
 OSTYPE=`uname`
-if [[ "$OSTYPE" != [Dawwin,Linux] ]]; then
+if [[ "$OSTYPE" != "Darwin" && "$OSTYPE" != "Linux"] ]]; then
 	exit 0
 else
 	case "$OSTYPE" in
